@@ -18,9 +18,9 @@ return new class extends Migration
 
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('full name', 50);
-            $table->int('cc', 15);
-            $table->string('email', 60);
+            $table->string('full_name', 50);
+            $table->string('cc', 35)->unique();
+            $table->string('email', 80);
             $table->timestamps();
         });
     }

@@ -14,8 +14,10 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
-            $table->int('number_accounts', 45);
-            $table->int('user_id', 15);
+            $table->string('number', 45);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
 
 

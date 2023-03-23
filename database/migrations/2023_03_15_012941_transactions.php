@@ -13,11 +13,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('transactions', function (Blueprint $table)
+         {
             $table->id();
-            $table->int('id_accounts_destination', 15);
             $table->string('type', 15);
-            $table->int('id_accounts_origin', 15);
+            $table->string('amount', 50);
+            $table->unsignedBigInteger('account_id_origin')->nullable();
+            $table->unsignedBigInteger('account_id_destination');
+            $table->foreign('account_id_origin')->references('id')->on('accounts');
+            $table->foreign('account_id_destination')->references('id')->on('accounts');
             $table->timestamps();
         });
 
